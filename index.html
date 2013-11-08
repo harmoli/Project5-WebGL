@@ -147,7 +147,6 @@
         vec3 cloudColor = texture2D(u_Cloud, v_Texcoord - vec2(u_time,0.0)).rgb;
         float cloudTransTerm = texture2D(u_CloudTrans, vec2(v_Texcoord.s - u_time, v_Texcoord.t)).r;
 
-       
         vec3 day = mix(cloudColor, ((0.6 * bump_diffuse) + (0.4 * specular)) * dayColor, cloudTransTerm);
         //vec3 day = ((0.6 * bump_diffuse) + (0.4 * specular)) * dayColor;
         vec3 night = mix(vec3(0,0,0), nightColor, cloudTransTerm);

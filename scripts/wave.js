@@ -6,6 +6,16 @@
     var NUM_WIDTH_PTS = 100;
     var NUM_HEIGHT_PTS = 100;
 
+    var stats = new Stats();
+    var stats_ms = new Stats();
+    stats_ms.setMode(1);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '10px';
+    document.body.appendChild( stats.domElement );
+    stats_ms.domElement.style.position = 'absolute';
+    stats_ms.domElement.style.top = '60px';
+    document.body.appendChild( stats_ms.domElement );
+
     var message = document.getElementById("message");
     var canvas = document.getElementById("canvas");
     var context = createWebGLContext(canvas, message);
@@ -14,7 +24,6 @@
     }
 
     ///////////////////////////////////////////////////////////////////////////
-
     context.viewport(0, 0, canvas.width, canvas.height);
     context.clearColor(1.0, 1.0, 1.0, 1.0);
     context.enable(context.DEPTH_TEST);
@@ -150,8 +159,10 @@
         context.uniformMatrix4fv(u_modelViewPerspectiveLocation, false, mvp);
         context.uniform1f(u_timeLocation, u_time);
         context.drawElements(context.LINES, numberOfIndices, context.UNSIGNED_SHORT,0);
-
 		window.requestAnimFrame(animate);
-    })();
+
+        stats.update();
+        stats_ms.update();    
+        })();
 
 }());

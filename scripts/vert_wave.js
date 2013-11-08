@@ -6,6 +6,16 @@
     var NUM_WIDTH_PTS = 32;
     var NUM_HEIGHT_PTS = 32;
 
+    var stats = new Stats();
+    var stats_ms = new Stats();
+    stats_ms.setMode(1);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.top = '10px';
+    document.body.appendChild( stats.domElement );
+    stats_ms.domElement.style.position = 'absolute';
+    stats_ms.domElement.style.top = '60px';
+    document.body.appendChild( stats_ms.domElement );
+
     var message = document.getElementById("message");
     var canvas = document.getElementById("canvas");
     var context = createWebGLContext(canvas, message);
@@ -151,6 +161,8 @@
         context.uniform1f(u_timeLocation, u_time);
         context.drawElements(context.LINES, numberOfIndices, context.UNSIGNED_SHORT,0);
 
+        stats.update();
+        stats_ms.update();
 		window.requestAnimFrame(animate);
     })();
 

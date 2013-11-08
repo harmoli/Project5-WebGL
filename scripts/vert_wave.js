@@ -3,8 +3,8 @@
     /*global window,document,Float32Array,Uint16Array,mat4,vec3,snoise*/
     /*global getShaderSource,createWebGLContext,createProgram*/
 
-    var NUM_WIDTH_PTS = 32;
-    var NUM_HEIGHT_PTS = 32;
+    var NUM_WIDTH_PTS = 64;
+    var NUM_HEIGHT_PTS = 64;
 
     var stats = new Stats();
     var stats_ms = new Stats();
